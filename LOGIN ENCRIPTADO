@@ -1,0 +1,24 @@
+API/RUTA
+
+route::post('/usuarios/login',[UsuariosCotroller::class,'login']);
+
+//CONTROLLER
+
+function login(Request $request){
+        $datos=$request-> all();
+        $usuario = Usuario::where('correo', $datos['correo'])
+                             ->where('contrasena', $datos['contrasena'])
+                            ->first();
+
+            if ($usuario){
+                return json_encode($usuario);
+            }
+        
+
+        else {
+            return "Usuario no existe";
+
+        }
+
+} 
+    }
